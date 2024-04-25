@@ -15,7 +15,14 @@ const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
-// app.use(cors({origin:process.env.CORS_URL,credentials:true}))
+
+app.use(
+  cors({
+      origin:'http://localhost:8000',
+      methods:'GET,HEAD,PUT,PATCH,POST,DELETE',
+      credentials:true
+  })
+)
 
 
 

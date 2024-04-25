@@ -2,12 +2,14 @@ import jwt from "jsonwebtoken"
 import { Request,Response,NextFunction } from "express";
 
 const verifyToken  =async (req:Request,res:Response,next:NextFunction) =>{
+    
     const  token : string | undefined= req.header("Authorization") ;
+    console.log('token',token);
+    
     try {
     if (!token) {
         return res.status(401).json({ error: "Invalid token" });
     }
-   
         const decoded:any = jwt.verify(token,process.env.JWT_SECRET as string)
         console.log('decoded',decoded);
         
