@@ -78,11 +78,15 @@ const verifyOtp = async (req: Request, res: Response) => {
 const userLogin = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
+    console.log('email',email);
+    
     if (!email || !password) {
       res.status(401).json("Invalid credentials");
     }
 
     const userFound = await UserModel.findOne({ email });
+    console.log('userfounf',userFound);
+    
     if (userFound) {
       const hashedPassword = userFound.password;
       console.log("login hasedpasswoerd", hashedPassword);
@@ -152,7 +156,7 @@ const changePassword = async (req:Request,res:Response) =>{
 
 const dashboard = async (req:Request,res:Response) =>{
   try {
-    const token = req.headers.token as string 
+    const  token = req.headers.token  as string;
     console.log('user,',token)
     if(token){
       const decoded:any = jwt.verify(token,process.env.JWT_SECRET as string)

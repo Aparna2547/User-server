@@ -12,7 +12,7 @@ const verifyToken  =async (req:Request,res:Response,next:NextFunction) =>{
     }
         const decoded:any = jwt.verify(token,process.env.JWT_SECRET as string)
         console.log('decoded',decoded);
-        
+         
         next()
     } catch (error) {
         res.status(401).json({error:"Invalid token"})

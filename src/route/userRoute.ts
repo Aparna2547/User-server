@@ -8,6 +8,6 @@ router.post('/register',userRegister)
 router.post('/verifyOtp',verifyOtp)
 router.post('/',userLogin)
 router.post('/changePassword',verifyToken,changePassword)
-router.get('/home',verifyToken,dashboard)
+router.get('/home',dashboard)
 
 export default router
